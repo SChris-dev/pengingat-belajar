@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { LogBox } from 'react-native';
+import { ReminderProvider } from './app/context/ReminderContext';
+import SimpleNavigator from './app/navigation/SimpleNavigator';
+
+// Ignore specific warnings
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ReminderProvider>
+      <SimpleNavigator />
+    </ReminderProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// import { LogBox } from 'react-native';
+// import { ReminderProvider } from './app/context/ReminderContext';
+// import AppNavigator from './app/navigation/AppNavigator';
+
+// LogBox.ignoreLogs([
+//   'Non-serializable values were found in the navigation state',
+// ]);
+
+// export default function App() {
+//   return (
+//     <ReminderProvider>
+//       <AppNavigator />
+//     </ReminderProvider>
+//   );
+// }
